@@ -666,7 +666,7 @@ ul { list-style: none; }
 }
 .video-mockup__phone {
   width: 175px; height: 310px; border-radius: 26px;
-  border: 3.5px solid var(--text); background: var(--bg-warm);
+  border: 3.5px solid var(--text); background: linear-gradient(160deg, #c4a882 0%, #8c6c52 100%);
   position: relative; overflow: hidden;
   box-shadow: 0 10px 36px rgba(0,0,0,.2), inset 0 0 0 1px rgba(255,255,255,.12);
   transition: transform .3s, box-shadow .3s;
