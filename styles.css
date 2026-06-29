@@ -411,7 +411,7 @@ ul { list-style: none; }
 .portfolio-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
 
 .portfolio-card__thumb {
-  height: 130px; background: var(--bg-warm);
+  height: 130px; background: var(--white);
   display: flex; align-items: center; justify-content: center;
   padding: 1.2rem 1.5rem; position: relative; overflow: hidden;
   border-bottom: 1px solid var(--cream-light);
@@ -596,11 +596,12 @@ ul { list-style: none; }
   width: fit-content; margin-bottom: 2.5rem;
 }
 .service-tab {
-  padding: .5rem 1.1rem; border-radius: 50px;
-  font-size: .85rem; font-weight: 600; color: var(--text-mid);
-  transition: background .2s, color .2s; cursor: pointer;
+  padding: .55rem 1.2rem; border-radius: 50px;
+  font-size: .85rem; font-weight: 600; color: var(--brown);
+  border: 2px solid var(--cream); background: var(--white);
+  transition: background .2s, color .2s, border-color .2s; cursor: pointer;
 }
-.service-tab.active, .service-tab:hover { background: var(--brown); color: var(--white); }
+.service-tab.active, .service-tab:hover { background: var(--brown); color: var(--white); border-color: var(--brown); }
 .service-panel { display: none; }
 .service-panel.active { display: block; animation: fadeIn .3s ease; }
 
