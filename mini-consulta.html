@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini consulta · Valen Hernández</title>
+  <meta name="description" content="Mini consulta de 60 minutos con Valen Hernández: resuelve tu duda de contenido, comunicación, estrategia o IA y sal con un plan claro. Paga, envía tu comprobante y elige tu horario." />
+  <link rel="icon" href="assets/icons/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700;1,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Layout: collage cálido — bloques redondeados de color, stickers (flores, sol, destellos) y tipografía grande, sobre la paleta café/crema de la marca */
+    :root {
+      --mc-cream:  #F7F1EA;
+      --mc-paper:  #FFFCF8;
+      --mc-cocoa:  #3B2117;
+      --mc-brown:  #6E3F28;
+      --mc-caramel:#A46A43;
+      --mc-blush:  #F8D4B4;
+      --mc-rose:   #E07B3C;
+      --mc-butter: #F2C46D;
+      --mc-sage:   #A7B38F;
+      --mc-ink:    #2E2219;
+      --mc-mid:    #6B5244;
+      --mc-line:   #E6CBB6;
+      --mc-display: 'Playfair Display', Georgia, serif;
+      --mc-body: 'DM Sans', system-ui, sans-serif;
+      --mc-hand: 'Caveat', 'Bradley Hand', cursive;
+    }
+    body { background: var(--mc-cream); color: var(--mc-ink); }
+    .mc-wrap { width: min(1160px, 100%); margin-inline: auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+    .mc-hand { font-family: var(--mc-hand); font-weight: 700; }
+    .mc-eyebrow { font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--mc-caramel); }
+    .mc-h2 { font-family: var(--mc-display); font-weight: 900; font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.02; letter-spacing: -.01em; text-wrap: balance; color: var(--mc-cocoa); }
+    .mc-h2 em { font-style: italic; color: var(--mc-rose); }
+    .mc-lead { font-size: 1.02rem; color: var(--mc-mid); line-height: 1.7; max-width: 60ch; }
+    .mc-ico { display: inline-block; vertical-align: middle; }
+    .spin { animation: spin 22s linear infinite; }
+    .float { animation: float 6s ease-in-out infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes float { 50% { transform: translateY(-10px) rotate(6deg); } }
+    @media (prefers-reduced-motion: reduce) { .spin, .float, .mc-marquee__track { animation: none !important; } }
+
+    .mc-btn { display: inline-flex; align-items: center; gap: .55rem; font-family: var(--mc-body); font-weight: 700; font-size: .95rem; border-radius: 999px; padding: .95rem 1.6rem; transition: transform .2s, box-shadow .2s, background .2s; cursor: pointer; border: 0; }
+    .mc-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(59,33,23,.18); }
+    .mc-btn:focus-visible { outline: 3px solid var(--mc-butter); outline-offset: 3px; }
+    .mc-btn--dark { background: var(--mc-brown); color: var(--mc-paper); }
+    .mc-btn--dark:hover { background: var(--mc-cocoa); }
+    .mc-btn--ghost { background: transparent; color: var(--mc-brown); box-shadow: inset 0 0 0 2px var(--mc-brown); }
+    .mc-btn--wa { background: #25D366; color: #fff; }
+    .mc-btn--paypal { background: #FFC439; color: #1F2D5C; }
+    .mc-btn--cream { background: var(--mc-paper); color: var(--mc-brown); }
+
+    /* ===== HERO ===== */
+    .mc-hero { position: relative; padding-top: calc(var(--nav-h, 70px) + 36px); padding-bottom: 72px; overflow: hidden; }
+    .mc-hero__grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; position: relative; z-index: 1; }
+    .mc-hero__copy { min-width: 0; }
+    .mc-hero__crumb { font-size: .8rem; color: var(--mc-mid); margin-bottom: 1.2rem; }
+    .mc-hero__crumb a { color: var(--mc-caramel); }
+    .mc-tag { display: inline-flex; align-items: center; gap: .4rem; background: var(--mc-butter); color: var(--mc-cocoa); font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; padding: .45rem .9rem; border-radius: 999px; transform: rotate(-2deg); }
+    .mc-hero__title { font-family: var(--mc-display); font-weight: 900; font-size: clamp(3.2rem, 9vw, 6.6rem); line-height: .9; letter-spacing: -.02em; color: var(--mc-brown); margin: 1.1rem 0 .2rem; text-transform: uppercase; }
+    .mc-hero__title span { display: block; }
+    .mc-hero__title .alt { color: var(--mc-rose); }
+    .mc-hero__script { font-family: var(--mc-hand); font-size: clamp(2.2rem, 5vw, 3.4rem); color: var(--mc-caramel); line-height: 1; transform: rotate(-4deg); display: inline-block; margin: .1rem 0 1.2rem .4rem; }
+    .mc-hero__desc { font-size: 1.05rem; color: var(--mc-mid); max-width: 46ch; line-height: 1.7; }
+    .mc-hero__btns { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.8rem; }
+
+    .mc-hero__visual { position: relative; justify-self: center; width: min(440px, 100%); }
+    .mc-blob { position: absolute; inset: -6% -10% 6% 8%; background: var(--mc-blush); border-radius: 50% 50% 46% 54% / 58% 52% 48% 42%; }
+    .mc-arch { position: relative; aspect-ratio: 4/5; max-width: 100%; border-radius: 999px 999px 28px 28px; overflow: hidden; border: 8px solid var(--mc-paper); box-shadow: 0 24px 60px rgba(59,33,23,.18); background: var(--mc-caramel); }
+    .mc-arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+    .mc-badge { position: absolute; left: -38px; bottom: 40px; width: 132px; height: 132px; }
+    .mc-badge__core { position: absolute; inset: 22px; border-radius: 50%; background: var(--mc-rose); color: var(--mc-paper); display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--mc-display); font-weight: 900; line-height: 1; }
+    .mc-badge__core b { font-size: 1.9rem; }
+    .mc-badge__core small { font-family: var(--mc-body); font-size: .62rem; letter-spacing: .14em; font-weight: 700; margin-top: .2rem; }
+    .mc-price-sticker { position: absolute; right: -14px; top: 18px; background: var(--mc-cocoa); color: var(--mc-paper); padding: .9rem 1.1rem; border-radius: 20px; transform: rotate(5deg); box-shadow: 0 12px 28px rgba(59,33,23,.25); text-align: center; }
+    .mc-price-sticker span { display: block; font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mc-blush); font-weight: 700; }
+    .mc-price-sticker strong { font-family: var(--mc-display); font-size: 1.5rem; font-weight: 900; }
+    .mc-deco { position: absolute; pointer-events: none; }
+
+    /* ===== MARQUEE ===== */
+    .mc-marquee { background: var(--mc-brown); color: var(--mc-paper); overflow: hidden; transform: rotate(-1.2deg) scale(1.03); padding-block: 14px; }
+    .mc-marquee-wrap { overflow: hidden; padding-block: 10px; }
+    .mc-marquee__track { display: flex; gap: 2.2rem; width: max-content; animation: marquee 30s linear infinite; font-family: var(--mc-display); font-style: italic; font-weight: 700; font-size: 1.35rem; white-space: nowrap; }
+    .mc-marquee__track span { display: inline-flex; align-items: center; gap: 2.2rem; }
+    .mc-marquee__track i { color: var(--mc-butter); font-style: normal; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ===== PARA TI ===== */
+    .mc-sec { padding-block: 96px; position: relative; }
+    .mc-sec__head { display: flex; flex-direction: column; gap: .7rem; margin-bottom: 2.6rem; }
+    .mc-sec__head--center { align-items: center; text-align: center; }
+    .mc-fit { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .mc-fit__card { border-radius: 160px 160px 26px 26px; padding: 2.4rem 1.4rem 1.6rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .8rem; min-width: 0; }
+    .mc-fit__card:nth-child(1) { background: var(--mc-blush); }
+    .mc-fit__card:nth-child(2) { background: var(--mc-butter); }
+    .mc-fit__card:nth-child(3) { background: var(--mc-sage); }
+    .mc-fit__card:nth-child(4) { background: var(--mc-rose); }
+    .mc-fit__icon { width: 74px; height: 74px; border-radius: 50%; background: var(--mc-paper); display: grid; place-items: center; color: var(--mc-brown); }
+    .mc-fit__title { font-family: var(--mc-display); font-weight: 800; font-size: 1.2rem; line-height: 1.15; color: var(--mc-cocoa); }
+    .mc-fit__desc { font-size: .88rem; color: var(--mc-cocoa); opacity: .82; line-height: 1.5; }
+    .mc-topics { margin-top: 2.2rem; display: flex; flex-direction: column; align-items: center; gap: .9rem; text-align: center; }
+    .mc-topics__label { font-size: 1.8rem; color: var(--mc-rose); line-height: 1; }
+    .mc-topics__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: .55rem; max-width: 860px; }
+    .mc-topics__chips span { background: var(--mc-paper); border: 1.5px solid var(--mc-line); color: var(--mc-brown); font-weight: 600; font-size: .88rem; padding: .5rem 1rem; border-radius: 999px; }
+    .mc-topics__chips span:nth-child(3n+1) { transform: rotate(-1.5deg); }
+    .mc-topics__chips span:nth-child(3n) { transform: rotate(1.5deg); }
+    .mc-topics__note { font-size: .88rem; color: var(--mc-mid); max-width: 56ch; }
+    .mc-topics__note a { color: var(--mc-brown); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ===== QUÉ INCLUYE ===== */
+    .mc-incl { display: grid; grid-template-columns: 1.25fr 1fr; gap: 22px; align-items: stretch; }
+    .mc-incl__list { background: var(--mc-paper); border-radius: 28px; padding: 2.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem 1.6rem; border: 1.5px solid var(--mc-line); }
+    .mc-incl__item { display: grid; grid-template-columns: 46px 1fr; gap: .9rem; align-items: start; min-width: 0; }
+    .mc-incl__dot { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: var(--mc-paper); }
+    .mc-incl__item h3 { font-size: .98rem; font-weight: 700; color: var(--mc-cocoa); margin-bottom: .15rem; }
+    .mc-incl__item p { font-size: .85rem; color: var(--mc-mid); line-height: 1.5; }
+    .mc-incl__price { background: var(--mc-cocoa); color: var(--mc-paper); border-radius: 28px; padding: 2.2rem; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 1rem; }
+    .mc-incl__price .mc-eyebrow { color: var(--mc-blush); }
+    .mc-incl__amount { font-family: var(--mc-display); font-weight: 900; font-size: clamp(2.6rem, 5vw, 3.6rem); line-height: 1; }
+    .mc-incl__amount small { font-size: 1rem; font-family: var(--mc-body); font-weight: 600; opacity: .8; }
+    .mc-incl__meta { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .mc-chip { font-size: .78rem; font-weight: 600; padding: .4rem .8rem; border-radius: 999px; background: rgba(255,252,248,.12); color: var(--mc-paper); }
+    .mc-incl__note { font-family: var(--mc-hand); font-size: 1.5rem; color: var(--mc-butter); line-height: 1.15; margin-top: auto; }
+
+    /* ===== PASOS ===== */
+    .mc-book { background: var(--mc-brown); border-radius: 40px; padding: 64px clamp(18px, 4vw, 56px); position: relative; overflow: hidden; }
+    .mc-book .mc-h2 { color: var(--mc-paper); }
+    .mc-book .mc-h2 em { color: var(--mc-butter); }
+    .mc-book .mc-eyebrow { color: var(--mc-blush); }
+    .mc-book .mc-lead { color: rgba(255,252,248,.78); }
+    .mc-steps { display: flex; flex-direction: column; gap: 22px; position: relative; z-index: 1; }
+    .mc-step { background: var(--mc-paper); border-radius: 30px; padding: clamp(1.4rem, 3vw, 2.2rem); display: grid; grid-template-columns: 92px 1fr; gap: 1.6rem; }
+    .mc-step__num { width: 84px; height: 84px; position: relative; display: grid; place-items: center; }
+    .mc-step__num svg { position: absolute; inset: 0; }
+    .mc-step__num b { position: relative; font-family: var(--mc-display); font-weight: 900; font-size: 2rem; color: var(--mc-cocoa); }
+    .mc-step__body { min-width: 0; }
+    .mc-step__kicker { font-family: var(--mc-hand); font-size: 1.45rem; color: var(--mc-rose); line-height: 1; }
+    .mc-step__title { font-family: var(--mc-display); font-weight: 900; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--mc-cocoa); line-height: 1.1; margin: .2rem 0 .5rem; }
+    .mc-step__desc { font-size: .95rem; color: var(--mc-mid); margin-bottom: 1.4rem; max-width: 62ch; }
+
+    .mc-pay { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .mc-pay__card { border-radius: 22px; padding: 1.3rem; display: flex; flex-direction: column; gap: .8rem; position: relative; min-width: 0; }
+    .mc-pay__card--breb { background: var(--mc-blush); }
+    .mc-pay__card--bc { background: #F6E3C2; }
+    .mc-pay__card--pp { background: #DCE3CF; }
+    .mc-pay__head { display: flex; align-items: center; gap: .6rem; }
+    .mc-pay__logo { width: 40px; height: 40px; border-radius: 12px; background: var(--mc-paper); display: grid; place-items: center; color: var(--mc-brown); flex-shrink: 0; }
+    .mc-pay__name { font-weight: 700; color: var(--mc-cocoa); font-size: 1rem; line-height: 1.2; }
+    .mc-pay__sub { font-size: .74rem; color: var(--mc-mid); }
+    .mc-pay__flag { position: absolute; top: -10px; right: 14px; background: var(--mc-cocoa); color: var(--mc-paper); font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .6rem; border-radius: 999px; transform: rotate(3deg); }
+    .mc-field { background: var(--mc-paper); border-radius: 14px; padding: .7rem .8rem; display: flex; flex-direction: column; gap: .15rem; }
+    .mc-field__k { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mc-caramel); }
+    .mc-field__v { display: flex; align-items: center; justify-content: space-between; gap: .5rem; font-weight: 700; color: var(--mc-cocoa); font-size: 1.02rem; font-variant-numeric: tabular-nums; min-width: 0; }
+    .mc-field__v { flex-wrap: wrap; }
+    .mc-field__v > span { white-space: nowrap; }
+    .mc-copy { flex-shrink: 0; font-size: .72rem; font-weight: 700; color: var(--mc-paper); background: var(--mc-brown); border-radius: 999px; padding: .35rem .8rem; transition: background .2s; }
+    .mc-copy:hover, .mc-copy.copied { background: var(--mc-cocoa); }
+    .mc-copy:focus-visible { outline: 2px solid var(--mc-rose); outline-offset: 2px; }
+    .mc-pay__help { font-size: .78rem; color: var(--mc-mid); line-height: 1.45; }
+    .mc-pay__card .mc-btn { justify-content: center; padding: .8rem 1rem; font-size: .88rem; }
+    .mc-total { margin-top: 16px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border: 2px dashed var(--mc-line); border-radius: 18px; padding: .9rem 1.2rem; }
+    .mc-total span { font-size: .9rem; color: var(--mc-mid); }
+    .mc-total__v { display: flex; flex-direction: column; align-items: flex-end; gap: .1rem; }
+    .mc-total__v small { font-size: .82rem; color: var(--mc-mid); font-weight: 600; }
+    .mc-total strong { font-family: var(--mc-display); font-weight: 900; font-size: 1.7rem; color: var(--mc-brown); }
+
+    .mc-wa-row { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+    .mc-phone { background: var(--mc-cream); border-radius: 20px; padding: 1rem 1.1rem; max-width: 360px; font-size: .86rem; color: var(--mc-ink); position: relative; border: 1.5px solid var(--mc-line); }
+    .mc-phone__bubble { background: #DCF8C6; border-radius: 14px 14px 4px 14px; padding: .7rem .85rem; line-height: 1.45; }
+    .mc-phone__att { margin-top: .5rem; display: flex; align-items: center; gap: .45rem; font-size: .78rem; color: var(--mc-mid); }
+
+    .mc-cal { display: grid; grid-template-columns: 1fr auto; gap: 1.4rem; align-items: center; background: var(--mc-cream); border-radius: 22px; padding: 1.4rem; border: 1.5px solid var(--mc-line); }
+    .mc-cal__perks { display: flex; flex-direction: column; gap: .55rem; }
+    .mc-cal__perks li { display: flex; gap: .6rem; align-items: center; font-size: .9rem; color: var(--mc-ink); }
+    .mc-cal__perks svg { flex-shrink: 0; color: var(--mc-rose); }
+    .mc-cal__embed { margin-top: 16px; border-radius: 18px; overflow: hidden; border: 1.5px solid var(--mc-line); background: #fff; }
+    .mc-cal__embed iframe { display: block; width: 100%; height: 680px; border: 0; }
+    .mc-warn { margin-top: 14px; font-size: .82rem; color: var(--mc-mid); background: #FBEFE6; border-radius: 14px; padding: .75rem 1rem; line-height: 1.5; }
+
+    /* ===== PREPÁRATE ===== */
+    .mc-prep { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .mc-prep__card { background: var(--mc-paper); border: 1.5px solid var(--mc-line); border-radius: 24px; padding: 1.5rem; display: flex; flex-direction: column; gap: .7rem; min-width: 0; }
+    .mc-prep__card:nth-child(even) { transform: translateY(18px); }
+    .mc-prep__n { font-family: var(--mc-display); font-weight: 900; font-size: 1.15rem; color: var(--mc-cocoa); line-height: 1.2; }
+    .mc-prep__card h3 { font-family: var(--mc-hand); font-weight: 700; font-size: 2rem; color: var(--mc-rose); line-height: 1; }
+    .mc-prep__card p { font-size: .86rem; color: var(--mc-mid); line-height: 1.55; }
+
+    /* ===== FAQ ===== */
+    .mc-faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px; align-items: start; }
+    .mc-faq .faq-list { margin: 0; max-width: none; }
+    .mc-faq .faq-item { border-radius: 20px; border-color: var(--mc-line); }
+    .mc-faq .faq-btn { font-weight: 700; }
+
+    /* ===== CTA FINAL ===== */
+    .mc-final { background: var(--mc-blush); border-radius: 40px; padding: clamp(2rem, 5vw, 3.6rem); display: grid; grid-template-columns: 1.3fr auto; gap: 2rem; align-items: center; position: relative; overflow: hidden; }
+    .mc-final__title { font-family: var(--mc-display); font-weight: 900; font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: .92; color: var(--mc-brown); text-transform: uppercase; letter-spacing: -.02em; }
+    .mc-final__script { font-family: var(--mc-hand); font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--mc-rose); transform: rotate(-3deg); display: inline-block; margin-top: .3rem; }
+    .mc-final__side { display: flex; flex-direction: column; gap: .7rem; align-items: stretch; position: relative; z-index: 1; }
+    .mc-final__side .mc-btn { justify-content: center; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 980px) {
+      .mc-fit, .mc-prep { grid-template-columns: repeat(2, 1fr); }
+      .mc-pay { grid-template-columns: 1fr; }
+      .mc-incl, .mc-faq { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 820px) {
+      .mc-hero .mc-deco.float:first-child { display: none; }
+      .mc-hero__grid { grid-template-columns: 1fr; }
+      .mc-hero__visual { width: min(360px, 86%); margin-top: 1rem; }
+      .mc-final { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .mc-sec { padding-block: 64px; }
+      .mc-fit { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .mc-fit__card { padding: 1.8rem .9rem 1.2rem; }
+      .mc-fit__icon { width: 58px; height: 58px; }
+      .mc-fit__title { font-size: 1rem; }
+      .mc-fit__desc { font-size: .8rem; }
+      .mc-incl__list { grid-template-columns: 1fr; padding: 1.5rem; }
+      .mc-step { grid-template-columns: 1fr; gap: .6rem; }
+      .mc-step__num { width: 64px; height: 64px; }
+      .mc-step__num b { font-size: 1.5rem; }
+      .mc-cal { grid-template-columns: 1fr; }
+      .mc-cal .mc-btn { justify-content: center; }
+      .mc-prep { grid-template-columns: 1fr; }
+      .mc-prep__card:nth-child(even) { transform: none; }
+      .mc-badge { left: -14px; width: 108px; height: 108px; }
+      .mc-badge__core { inset: 18px; }
+      .mc-badge__core b { font-size: 1.5rem; }
+      .mc-price-sticker { right: -6px; }
+      .mc-book { border-radius: 28px; padding-block: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Iconos y stickers reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="flower" viewBox="-50 -50 100 100">
+      <g fill="currentColor">
+        <ellipse rx="13" ry="25" cy="-24"/><ellipse rx="13" ry="25" cy="-24" transform="rotate(60)"/><ellipse rx="13" ry="25" cy="-24" transform="rotate(120)"/>
+        <ellipse rx="13" ry="25" cy="-24" transform="rotate(180)"/><ellipse rx="13" ry="25" cy="-24" transform="rotate(240)"/><ellipse rx="13" ry="25" cy="-24" transform="rotate(300)"/>
+      </g>
+      <circle r="12" fill="#F2C46D"/>
+    </symbol>
+    <symbol id="sun" viewBox="-50 -50 100 100">
+      <g stroke="currentColor" stroke-width="5" stroke-linecap="round">
+        <line y1="-30" y2="-46"/><line y1="-30" y2="-46" transform="rotate(30)"/><line y1="-30" y2="-46" transform="rotate(60)"/><line y1="-30" y2="-46" transform="rotate(90)"/>
+        <line y1="-30" y2="-46" transform="rotate(120)"/><line y1="-30" y2="-46" transform="rotate(150)"/><line y1="-30" y2="-46" transform="rotate(180)"/><line y1="-30" y2="-46" transform="rotate(210)"/>
+        <line y1="-30" y2="-46" transform="rotate(240)"/><line y1="-30" y2="-46" transform="rotate(270)"/><line y1="-30" y2="-46" transform="rotate(300)"/><line y1="-30" y2="-46" transform="rotate(330)"/>
+      </g>
+      <circle r="24" fill="currentColor"/>
+    </symbol>
+    <symbol id="spark" viewBox="0 0 40 40"><path fill="currentColor" d="M20 0c1.6 10.6 4.4 13.4 15 15-10.6 1.6-13.4 4.4-15 15-1.6-10.6-4.4-13.4-15-15C15.6 13.4 18.4 10.6 20 0z" transform="translate(0 5)"/></symbol>
+    <symbol id="squiggle" viewBox="0 0 120 30"><path d="M2 18c10-14 20-14 30 0s20 14 30 0 20-14 30 0 18 12 26 2" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="blobnum" viewBox="0 0 100 100"><path fill="currentColor" d="M50 2c12 0 16 9 26 13s20 12 20 26-6 18-8 28-10 22-24 25-22-2-32-8S6 72 4 58 6 32 14 22 38 2 50 2z"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  </defs>
+</svg>
+
+<header class="navbar" id="navbar"><div class="navbar__inner">
+  <a href="index.html" class="navbar__logo"><img src="assets/logos/logo.png" alt="Valen Hernández" class="navbar__logo-img" /></a>
+  <nav class="navbar__nav"><a href="index.html" class="nav-link">Inicio</a><a href="sobre-mi.html" class="nav-link">Sobre mí</a><a href="servicios.html" class="nav-link active">Servicios</a><a href="portafolio.html" class="nav-link">Proyectos</a><a href="faq.html" class="nav-link">Preguntas</a><a href="contacto.html" class="nav-link">Contacto</a></nav>
+  <a href="#reservar" class="btn btn-primary btn-sm navbar__cta">Reservar mi consulta</a>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></header>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="index.html" class="nav-link">Inicio</a><a href="sobre-mi.html" class="nav-link">Sobre mí</a><a href="servicios.html" class="nav-link">Servicios</a><a href="portafolio.html" class="nav-link">Proyectos</a><a href="faq.html" class="nav-link">Preguntas frecuentes</a><a href="contacto.html" class="nav-link">Contacto</a>
+  <a href="#reservar" class="btn btn-primary">Reservar mi consulta</a>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="mc-hero">
+  <svg class="mc-deco float" style="left:40%;top:96px;width:46px;height:46px;color:var(--mc-rose)"><use href="#flower"/></svg>
+  <svg class="mc-deco" style="left:2%;bottom:120px;width:28px;height:28px;color:var(--mc-butter)"><use href="#spark"/></svg>
+  <svg class="mc-deco float" style="right:4%;bottom:40px;width:72px;height:72px;color:var(--mc-sage);animation-delay:-2s"><use href="#flower"/></svg>
+  <div class="mc-wrap">
+    <div class="mc-hero__grid">
+      <div class="mc-hero__copy">
+        <nav class="mc-hero__crumb"><a href="index.html">Inicio</a> › <a href="servicios.html">Servicios</a> › Mini consulta</nav>
+        <span class="mc-tag">⚡ Servicio express · 1:1 online</span>
+        <h1 class="mc-hero__title"><span>Mini</span><span class="alt">consulta</span></h1>
+        <span class="mc-hero__script">tu duda, sin vueltas</span>
+        <p class="mc-hero__desc">Una hora conmigo para resolver esa duda que te tiene dando vueltas: cómo comunicar algo, cómo armar tu estrategia, cómo darle identidad a tu contenido o cómo usar la IA a tu favor. Llegas con tu pregunta y te vas con un plan claro.</p>
+        <div class="mc-hero__btns">
+          <a href="#reservar" class="mc-btn mc-btn--dark">Reservar mi consulta →</a>
+          <a href="#para-ti" class="mc-btn mc-btn--ghost">¿Es para mí?</a>
+        </div>
+      </div>
+      <div class="mc-hero__visual">
+        <div class="mc-blob" aria-hidden="true"></div>
+        <svg class="mc-deco spin" style="right:-30px;bottom:-24px;width:96px;height:96px;color:var(--mc-butter);z-index:2" aria-hidden="true"><use href="#sun"/></svg>
+        <div class="mc-arch"><img src="assets/images/foto-mini-consulta.jpg" alt="Valen Hernández sonriendo" /></div>
+        <div class="mc-badge" aria-hidden="true">
+          <svg class="spin" viewBox="0 0 132 132" width="100%" height="100%">
+            <circle cx="66" cy="66" r="64" fill="var(--mc-paper)"/>
+            <defs><path id="ring" d="M66 66m-50 0a50 50 0 1 1 100 0a50 50 0 1 1-100 0"/></defs>
+            <text font-family="DM Sans, sans-serif" font-size="10.5" font-weight="700" letter-spacing="2.4" fill="#6E3F28"><textPath href="#ring">CLARIDAD RÁPIDA ✿ PLAN CLARO ✿ 1:1 ONLINE ✿</textPath></text>
+          </svg>
+          <div class="mc-badge__core"><b>60</b><small>MINUTOS</small></div>
+        </div>
+        <div class="mc-price-sticker"><span>Inversión</span><strong>$400.000</strong><span style="margin-top:.1rem">COP · USD 130</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mc-marquee-wrap"><div class="mc-marquee" aria-hidden="true">
+  <div class="mc-marquee__track">
+    <span>Comunicación <i>✿</i> Estrategia <i>✿</i> Identidad de marca <i>✿</i> Ideas de contenido <i>✿</i> Inteligencia artificial <i>✿</i> Marca personal <i>✿</i></span>
+    <span>Comunicación <i>✿</i> Estrategia <i>✿</i> Identidad de marca <i>✿</i> Ideas de contenido <i>✿</i> Inteligencia artificial <i>✿</i> Marca personal <i>✿</i></span>
+  </div>
+</div>
+
+<!-- ============ PARA TI ============ -->
+<section class="mc-sec" id="para-ti">
+  <div class="mc-wrap">
+    <div class="mc-sec__head mc-sec__head--center">
+      <span class="mc-eyebrow">¿Es para ti?</span>
+      <h2 class="mc-h2">Trae la duda que tengas, <em>la resolvemos en una hora</em></h2>
+      <p class="mc-lead">No es solo para revisar tu perfil. Es un espacio para cualquier pregunta sobre tu contenido, tu marca o tu presencia digital que podamos trabajar juntas en 60 minutos.</p>
+      <svg width="110" height="26" style="color:var(--mc-rose)" aria-hidden="true"><use href="#squiggle"/></svg>
+    </div>
+    <div class="mc-fit">
+      <div class="mc-fit__card">
+        <div class="mc-fit__icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5h16v11H8l-4 4z"/><path d="M9 10h.01M12 10h.01M15 10h.01" stroke-width="2.6"/></svg></div>
+        <h3 class="mc-fit__title">No sabes cómo comunicar algo</h3>
+        <p class="mc-fit__desc">Un servicio nuevo, un precio, una idea o un cambio en tu marca.</p>
+      </div>
+      <div class="mc-fit__card">
+        <div class="mc-fit__icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></div>
+        <h3 class="mc-fit__title">Tu contenido no tiene identidad</h3>
+        <p class="mc-fit__desc">Se parece al de todos y quieres que se sienta tuyo, en tono y en estilo.</p>
+      </div>
+      <div class="mc-fit__card">
+        <div class="mc-fit__icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg></div>
+        <h3 class="mc-fit__title">No sabes por dónde empezar</h3>
+        <p class="mc-fit__desc">Tu estrategia: objetivos, pilares, formatos y cada cuánto publicar.</p>
+      </div>
+      <div class="mc-fit__card">
+        <div class="mc-fit__icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15.5h5" stroke-width="2"/></svg></div>
+        <h3 class="mc-fit__title">Quieres usar la IA a tu favor</h3>
+        <p class="mc-fit__desc">Herramientas y procesos para crear más rápido sin perder tu voz.</p>
+      </div>
+    </div>
+    <div class="mc-topics">
+      <p class="mc-topics__label mc-hand">y también…</p>
+      <div class="mc-topics__chips">
+        <span>Ideas y formatos de contenido</span><span>Cómo vender sin sonar a venta</span><span>Tu marca personal</span><span>Trabajar con marcas</span><span>Organizar tu calendario</span><span>Elegir en qué red enfocarte</span><span>Validar una idea</span><span>Guiones y copies</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUÉ INCLUYE ============ -->
+<section class="mc-sec" style="padding-top:0">
+  <div class="mc-wrap">
+    <div class="mc-sec__head">
+      <span class="mc-eyebrow">Qué te llevas</span>
+      <h2 class="mc-h2">Una hora, <em>cero relleno</em></h2>
+    </div>
+    <div class="mc-incl">
+      <div class="mc-incl__list">
+        <div class="mc-incl__item"><div class="mc-incl__dot" style="background:var(--mc-rose)"><svg width="22" height="22"><use href="#check"/></svg></div><div><h3>Diagnóstico rápido</h3><p>Entendemos tu duda y tu contexto para ir directo a lo importante.</p></div></div>
+        <div class="mc-incl__item"><div class="mc-incl__dot" style="background:var(--mc-caramel)"><svg width="22" height="22"><use href="#check"/></svg></div><div><h3>Recomendaciones accionables</h3><p>Pasos concretos para tu caso, que puedes aplicar desde hoy.</p></div></div>
+        <div class="mc-incl__item"><div class="mc-incl__dot" style="background:var(--mc-sage)"><svg width="22" height="22"><use href="#check"/></svg></div><div><h3>Sesión 1:1 por Meet</h3><p>60 minutos solo para ti y tu pregunta.</p></div></div>
+        <div class="mc-incl__item"><div class="mc-incl__dot" style="background:var(--mc-brown)"><svg width="22" height="22"><use href="#check"/></svg></div><div><h3>Resumen por WhatsApp</h3><p>Los puntos clave y próximos pasos, por escrito.</p></div></div>
+      </div>
+      <div class="mc-incl__price">
+        <svg class="mc-deco spin" style="right:-40px;top:-40px;width:150px;height:150px;color:var(--mc-caramel);opacity:.5" aria-hidden="true"><use href="#sun"/></svg>
+        <span class="mc-eyebrow">Inversión</span>
+        <div class="mc-incl__amount">$400.000 <small>COP</small></div>
+        <p style="font-size:.9rem;color:var(--mc-blush);margin-top:-.4rem">o USD 130 si pagas desde fuera de Colombia</p>
+        <div class="mc-incl__meta"><span class="mc-chip">Pago único</span><span class="mc-chip">60 minutos</span><span class="mc-chip">Google Meet</span></div>
+        <p class="mc-incl__note">Llegas con tu pregunta,<br />te vas con un plan ✿</p>
+        <a href="#reservar" class="mc-btn mc-btn--cream" style="align-self:flex-start">Quiero reservar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVAR ============ -->
+<section class="mc-sec" id="reservar" style="padding-top:0">
+  <div class="mc-wrap">
+    <div class="mc-book">
+      <svg class="mc-deco float" style="right:4%;top:40px;width:70px;height:70px;color:var(--mc-rose)" aria-hidden="true"><use href="#flower"/></svg>
+      <svg class="mc-deco" style="left:3%;top:56px;width:30px;height:30px;color:var(--mc-butter)" aria-hidden="true"><use href="#spark"/></svg>
+      <div class="mc-sec__head mc-sec__head--center" style="position:relative;z-index:1">
+        <span class="mc-eyebrow">Reserva en 3 pasos</span>
+        <h2 class="mc-h2">Paga, avísame <em>y elige tu hora</em></h2>
+        <p class="mc-lead">Todo lo haces desde aquí en menos de 5 minutos.</p>
+      </div>
+
+      <div class="mc-steps">
+        <!-- PASO 1 -->
+        <article class="mc-step" id="paso-1">
+          <div class="mc-step__num"><svg viewBox="0 0 100 100" style="color:var(--mc-butter)"><use href="#blobnum"/></svg><b>1</b></div>
+          <div class="mc-step__body">
+            <span class="mc-step__kicker">primero lo primero</span>
+            <h3 class="mc-step__title">Realiza el pago</h3>
+            <p class="mc-step__desc">Elige la opción que te quede más fácil. Toca <strong>Copiar</strong> y pega el dato en la app de tu banco.</p>
+            <div class="mc-pay">
+              <div class="mc-pay__card mc-pay__card--breb">
+                <span class="mc-pay__flag">Más rápido</span>
+                <div class="mc-pay__head">
+                  <div class="mc-pay__logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></svg></div>
+                  <div><div class="mc-pay__name">Llave Bre-B</div><div class="mc-pay__sub">Desde cualquier banco en Colombia</div></div>
+                </div>
+                <div class="mc-field"><span class="mc-field__k">Llave</span><span class="mc-field__v"><span data-copy-value>@valentina2536</span><button class="mc-copy" type="button">Copiar</button></span></div>
+                <p class="mc-pay__help">Solo necesitas la llave. Funciona con Nequi, Daviplata, Bancolombia, Davivienda y demás.</p>
+              </div>
+              <div class="mc-pay__card mc-pay__card--bc">
+                <div class="mc-pay__head">
+                  <div class="mc-pay__logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg></div>
+                  <div><div class="mc-pay__name">Bancolombia</div><div class="mc-pay__sub">Transferencia a cuenta</div></div>
+                </div>
+                <div class="mc-field"><span class="mc-field__k">Cuenta de ahorros</span><span class="mc-field__v"><span data-copy-value>75600002494</span><button class="mc-copy" type="button">Copiar</button></span></div>
+                <p class="mc-pay__help">Ideal si ya tienes Bancolombia: la transferencia es inmediata.</p>
+              </div>
+              <div class="mc-pay__card mc-pay__card--pp">
+                <div class="mc-pay__head">
+                  <div class="mc-pay__logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div>
+                  <div><div class="mc-pay__name">PayPal</div><div class="mc-pay__sub">Si estás fuera de Colombia</div></div>
+                </div>
+                <div class="mc-field"><span class="mc-field__k">Valor en dólares</span><span class="mc-field__v"><span>USD 130</span></span></div>
+                <a href="https://paypal.me/vaalenhernandez/130USD" class="mc-btn mc-btn--paypal" target="_blank" rel="noopener">Pagar USD 130 con PayPal ↗</a>
+                <p class="mc-pay__help">El enlace ya trae el valor. Usuario: vaalenhernandez</p>
+              </div>
+            </div>
+            <div class="mc-total"><span>Valor a pagar</span><div class="mc-total__v"><strong>$400.000 COP</strong><small>o USD 130 por PayPal</small></div></div>
+          </div>
+        </article>
+
+        <!-- PASO 2 -->
+        <article class="mc-step" id="paso-2">
+          <div class="mc-step__num"><svg viewBox="0 0 100 100" style="color:var(--mc-blush)"><use href="#blobnum"/></svg><b>2</b></div>
+          <div class="mc-step__body">
+            <span class="mc-step__kicker">para confirmar tu cupo</span>
+            <h3 class="mc-step__title">Envíame tu comprobante</h3>
+            <p class="mc-step__desc">Toma una captura del pago y envíamela por WhatsApp. El botón abre el chat con el mensaje ya escrito: solo adjuntas la captura.</p>
+            <div class="mc-wa-row">
+              <a href="https://wa.me/573104704939?text=Hola%20Valen%2C%20ya%20hice%20el%20pago%20de%20mi%20mini%20consulta%20%F0%9F%99%8C%20Te%20env%C3%ADo%20el%20comprobante.%0A%0AMi%20nombre%3A%20%0AMi%20Instagram%20o%20marca%3A%20" class="mc-btn mc-btn--wa" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#wa"/></svg>Enviar comprobante</a>
+              <div class="mc-phone" aria-hidden="true">
+                <div class="mc-phone__bubble">Hola Valen, ya hice el pago de mi mini consulta 🙌 Te envío el comprobante.<br />Mi nombre: …<br />Mi Instagram o marca: …</div>
+                <div class="mc-phone__att">📎 comprobante.jpg</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PASO 3 -->
+        <article class="mc-step" id="paso-3">
+          <div class="mc-step__num"><svg viewBox="0 0 100 100" style="color:var(--mc-sage)"><use href="#blobnum"/></svg><b>3</b></div>
+          <div class="mc-step__body">
+            <span class="mc-step__kicker">el último paso</span>
+            <h3 class="mc-step__title">Elige el día y la hora</h3>
+            <p class="mc-step__desc">Escoge el horario que mejor te funcione y completa tus datos. La sesión queda en mi calendario y a ti te llega un correo con la invitación.</p>
+            <div class="mc-cal">
+              <ul class="mc-cal__perks">
+                <li><svg width="20" height="20"><use href="#check"/></svg>Ves mis horarios disponibles en tiempo real</li>
+                <li><svg width="20" height="20"><use href="#check"/></svg>Recibes el enlace de Google Meet por correo</li>
+                <li><svg width="20" height="20"><use href="#check"/></svg>Te llega un recordatorio antes de la sesión</li>
+              </ul>
+              <a id="cal-link" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ194Wyew6Yw8647BvTpHhQifdbTG9XOM-mHILNLFDc6vLH3XWF5gKRCqES2rXTc0zxQAlsYHCNA?gv=true" class="mc-btn mc-btn--dark" target="_blank" rel="noopener">📅 Elegir mi horario ↗</a>
+            </div>
+            <div class="mc-cal__embed" id="cal-embed" hidden></div>
+            <p class="mc-warn"><strong>Importante:</strong> agenda después de pagar. Las reservas sin comprobante se liberan para que otra persona pueda tomar el espacio.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREPÁRATE ============ -->
+<section class="mc-sec" style="padding-top:24px">
+  <div class="mc-wrap">
+    <div class="mc-sec__head">
+      <span class="mc-eyebrow">Antes de la sesión</span>
+      <h2 class="mc-h2">Para sacarle <em>todo el jugo</em></h2>
+    </div>
+    <div class="mc-prep">
+      <div class="mc-prep__card"><span class="mc-prep__n">uno</span><h3>Escribe tu pregunta</h3><p>En una o dos frases. Entre más clara, más aprovechamos la hora.</p></div>
+      <div class="mc-prep__card"><span class="mc-prep__n">dos</span><h3>Trae ejemplos</h3><p>Tu perfil, una pieza, un borrador o una referencia: lo que ayude a explicar tu duda.</p></div>
+      <div class="mc-prep__card"><span class="mc-prep__n">tres</span><h3>Trae contexto</h3><p>Qué vendes o comunicas, a quién le hablas y qué has intentado.</p></div>
+      <div class="mc-prep__card"><span class="mc-prep__n">cuatro</span><h3>Conéctate tranquila</h3><p>Un lugar sin ruido, buena conexión y algo para tomar notas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="mc-sec" style="padding-top:48px">
+  <div class="mc-wrap">
+    <div class="mc-faq">
+      <div class="mc-sec__head" style="margin:0">
+        <span class="mc-eyebrow">Preguntas frecuentes</span>
+        <h2 class="mc-h2">Lo que <em>suelen preguntarme</em></h2>
+        <p class="mc-lead">¿Tienes otra duda? <a href="https://wa.me/573104704939?text=Hola%20Valen%2C%20tengo%20una%20pregunta%20sobre%20la%20mini%20consulta" target="_blank" rel="noopener" style="color:var(--mc-brown);font-weight:700">Escríbeme por WhatsApp →</a></p>
+        <svg width="90" height="90" class="spin" style="color:var(--mc-butter);margin-top:.6rem" aria-hidden="true"><use href="#sun"/></svg>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">¿Cuándo queda confirmada mi reserva?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><p>Cuando recibo tu comprobante por WhatsApp y agendas tu horario. Google Calendar te envía un correo con la invitación y el enlace de Meet.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">¿Puedo reprogramar mi sesión?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><p>Sí. Avísame por WhatsApp con al menos 24 horas de anticipación y buscamos un nuevo horario. Si no te conectas sin avisar, la sesión se da por realizada.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">¿Puedo traer más de una pregunta?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><p>Claro, siempre que quepan en la hora. Nos enfocamos en un tema principal; si traes varios, los priorizamos juntas al inicio.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">¿Sobre qué temas puedo preguntar?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><p>Sobre cualquier tema de contenido, comunicación, estrategia, marca personal, redes sociales o uso de IA que podamos trabajar en una hora. Si no estás segura de que tu duda aplique, escríbeme y te digo.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">Estoy fuera de Colombia, ¿cómo pago?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><p>Puedes pagar USD 130 por PayPal con el botón del paso 1 (paypal.me/vaalenhernandez). El enlace ya trae el valor.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" aria-expanded="false">¿Puedo grabar la sesión?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-answer"><p>Sí, si quieres puedes grabarla para repasarla después. Además te envío por WhatsApp un resumen con los puntos clave y los próximos pasos.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="mc-sec" style="padding-top:24px">
+  <div class="mc-wrap">
+    <div class="mc-final">
+      <svg class="mc-deco spin" style="right:30%;bottom:-50px;width:150px;height:150px;color:var(--mc-paper);opacity:.6" aria-hidden="true"><use href="#sun"/></svg>
+      <svg class="mc-deco float" style="right:3%;top:16px;width:58px;height:58px;color:var(--mc-rose)" aria-hidden="true"><use href="#flower"/></svg>
+      <div style="position:relative;z-index:1">
+        <h2 class="mc-final__title">¿Lista para<br />destrabarte?</h2>
+        <span class="mc-final__script">nos vemos en la llamada ✿</span>
+      </div>
+      <div class="mc-final__side">
+        <a href="#reservar" class="mc-btn mc-btn--dark">Reservar mi consulta →</a>
+        <a href="https://wa.me/573104704939?text=Hola%20Valen%2C%20tengo%20una%20pregunta%20sobre%20la%20mini%20consulta" class="mc-btn mc-btn--wa" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#wa"/></svg>Tengo una pregunta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer"><div class="container footer__inner"><p class="footer__copy">© 2026 Valen Hernández. Estrategia, contenido y presencia digital con propósito.</p><div class="footer__social"><a href="https://www.instagram.com/vaalenhernandez_" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div></div></footer>
+<a href="https://wa.me/573104704939?text=Hola%20Valen%2C%20tengo%20una%20pregunta%20sobre%20la%20mini%20consulta" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="22" height="22"><use href="#wa"/></svg><span class="wa-float__label">Escríbeme</span></a>
+<button class="back-top" id="backTop" aria-label="Volver arriba">↑</button>
+<script src="script.js"></script>
+<script>
+  // Copiar datos de pago
+  document.querySelectorAll('.mc-copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = btn.parentElement.querySelector('[data-copy-value]');
+      var text = el ? el.textContent.trim() : '';
+      var done = function () {
+        btn.textContent = '¡Copiado!'; btn.classList.add('copied');
+        setTimeout(function () { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 1800);
+      };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        try { document.execCommand('copy'); done(); } catch (e) {}
+      };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
+        else fallback();
+      } catch (e) { fallback(); }
+    });
+  });
+
+  // Calendario: se incrusta solo en tu web publicada (en vistas previas se usa el botón)
+  (function () {
+    var host = location.hostname;
+    if (/soyvalenhernandez\.com$|github\.io$/.test(host)) {
+      var box = document.getElementById('cal-embed');
+      var f = document.createElement('iframe');
+      f.src = document.getElementById('cal-link').href;
+      f.title = 'Agenda tu mini consulta';
+      f.loading = 'lazy';
+      box.appendChild(f);
+      box.hidden = false;
+    }
+  })();
+</script>
+</body></html>
