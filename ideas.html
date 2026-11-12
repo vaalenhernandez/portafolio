@@ -107,7 +107,19 @@ header.top{display:flex;justify-content:space-between;align-items:center;gap:14p
 .peek li{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:9px 0;border-top:1px solid var(--cream);font-size:.94rem;line-height:1.4;color:var(--mid)}
 .peek li:first-child{border-top:0;padding-top:0}
 .peek .n{font-size:.78rem;font-weight:600;color:var(--caramel);font-variant-numeric:tabular-nums;padding-top:2px}
-.more{margin-top:auto;font-weight:600;font-size:.88rem;color:var(--brown);display:flex;align-items:center;gap:6px}
+.more{margin-top:auto;align-self:flex-start;font-weight:600;font-size:.9rem;color:var(--paper);background:var(--brown);border-radius:999px;padding:.65rem 1.1rem;display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.card:hover .more{background:var(--cocoa)}
+/* pasos */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:720px}
+.steps li{display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:10px 12px;font-size:.88rem;line-height:1.3;color:var(--ink)}
+.steps b{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--butter);color:var(--cocoa);display:grid;place-items:center;font-weight:600;font-size:.85rem}
+/* barra de sectores */
+.finder{position:sticky;top:0;z-index:5;background:var(--cream);padding:10px 0 8px;border-bottom:1px solid transparent;transition:border-color .2s, box-shadow .2s}
+.finder.stuck{border-bottom-color:var(--line);box-shadow:0 6px 16px rgba(110,63,40,.08)}
+.finder__top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.finder__lbl{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--caramel)}
+.finder__hint{display:none;font-size:.8rem;color:var(--mid)}
+.chips-wrap{position:relative}
 
 .empty{text-align:center;padding:48px 16px;border:1px dashed var(--line);border-radius:24px;color:var(--mid);margin-top:24px;background:var(--paper)}
 .empty strong{display:block;font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--cocoa);margin-bottom:6px}
@@ -130,7 +142,10 @@ body.lock{overflow:hidden}
 .modal[hidden]{display:none}
 .modal__bg{position:absolute;inset:0;background:rgba(59,33,23,.5)}
 .modal__panel{position:relative;background:var(--paper);border-radius:28px;width:min(680px,100%);max-height:calc(100% - 8px);overflow-y:auto;padding:28px 28px 24px;box-shadow:0 30px 80px rgba(59,33,23,.3);outline:none}
-.modal__x{position:absolute;top:22px;right:22px;z-index:3;width:40px;height:40px;border-radius:50%;border:0;background:var(--cream);color:var(--cocoa);font-size:1.5rem;line-height:1;cursor:pointer}
+.modal__x{position:absolute;top:22px;right:22px;z-index:3;height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--cocoa);font:inherit;font-size:.85rem;font-weight:500;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.grab{display:none;width:44px;height:5px;border-radius:9px;background:var(--line);margin:-8px auto 12px}
+.m-hint{margin:8px 0 0;font-size:.8rem;color:var(--mid);text-align:center}
+.nav-btn[data-close]{background:var(--brown);color:var(--paper);border-radius:999px;padding:.7rem 1.2rem}
 .modal__x:focus-visible,.tab:focus-visible,.nav-btn:focus-visible{outline:3px solid var(--butter);outline-offset:2px}
 .m-sec{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--caramel)}
 .m-title{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,4vw,2rem);line-height:1.1;color:var(--cocoa);margin:4px 48px 18px 0;text-wrap:balance}
@@ -164,7 +179,11 @@ body.lock{overflow:hidden}
   .hero .script{font-size:2.2rem}
   .hero .lead{font-size:1rem;line-height:1.6}
   .hero .deco{display:none}
-  .chips{flex-wrap:nowrap;overflow-x:auto;margin-inline:-20px;padding:2px 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin-inline:-20px;padding:2px 44px 4px 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .chips-wrap::after{content:"";position:absolute;right:-20px;top:0;bottom:0;width:56px;pointer-events:none;background:linear-gradient(90deg,rgba(247,241,234,0),var(--cream) 70%)}
+  .finder__hint{display:inline}
+  .steps{grid-template-columns:1fr;gap:6px}
+  .steps li{padding:8px 12px;font-size:.92rem}
   .chips::-webkit-scrollbar{display:none}
   .chip{flex-shrink:0;padding:.6rem 1rem}
   .status{padding-top:6px}
@@ -176,7 +195,8 @@ body.lock{overflow:hidden}
   .modal__panel{width:100%;height:calc(100dvh - 28px);max-height:none;border-radius:24px 24px 0 0;padding:22px 20px calc(16px + env(safe-area-inset-bottom))}
   .m-head{top:-22px;margin:-22px -20px 0;padding:22px 20px 12px}
   .m-nav{bottom:calc(-16px - env(safe-area-inset-bottom));padding-bottom:calc(10px + env(safe-area-inset-bottom))}
-  .modal__x{top:16px;right:16px}
+  .modal__x{top:26px;right:16px}
+  .grab{display:block}
   .m-title{font-size:1.55rem;margin-bottom:14px}
   .tab{font-size:.85rem;min-height:40px}
   .pane{padding-top:18px;gap:20px}
@@ -216,13 +236,23 @@ body.lock{overflow:hidden}
       <h1>Busca tu idea</h1>
       <span class="script">aquí ✿</span>
     </div>
-    <p class="lead">En la caja de preguntas me contaron de qué es su negocio o su marca. Organicé las respuestas por sector y armé 3 ideas de contenido para cada negocio, con el hook exacto, lo que deben mostrar en el video y cómo cerrarlo.</p>
+    <p class="lead">En la caja de preguntas me contaron de qué es su negocio. Armé 3 ideas de contenido para cada uno, con el hook, qué mostrar en el video y cómo cerrarlo.</p>
+    <ol class="steps" aria-label="Cómo usar esta página">
+      <li><b>1</b><span>Escribe tu negocio o elige tu sector</span></li>
+      <li><b>2</b><span>Toca la tarjeta de tu negocio</span></li>
+      <li><b>3</b><span>Pasa entre las 3 ideas y grábalas</span></li>
+    </ol>
     <label class="search" for="q">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="Ej: panadería, skincare, mascotas…" autocomplete="off" aria-label="Busca tu tipo de negocio">
     </label>
-    <div class="chips" id="chips" role="group" aria-label="Filtrar por sector"></div>
   </section>
+</div>
+<div class="finder" id="finder">
+  <div class="wrap">
+    <div class="finder__top"><span class="finder__lbl">Elige tu sector</span><span class="finder__hint" aria-hidden="true">desliza →</span></div>
+    <div class="chips-wrap"><div class="chips" id="chips" role="group" aria-label="Filtrar por sector"></div></div>
+  </div>
 </div>
 
 
@@ -392,7 +422,7 @@ function card(c){
   return `<button type="button" class="card" data-id="${c.id}" aria-label="Ver las ideas para ${esc(c.n)}">
     <h3>${esc(c.n)}</h3>
     <ul class="peek">${c.i.map((x,k)=>`<li><span class="n">0${k+1}</span><span>${esc(x.t)}</span></li>`).join("")}</ul>
-    <span class="more">Ver las ideas <span aria-hidden="true">→</span></span>
+    <span class="more">Ver las 3 ideas <span aria-hidden="true">→</span></span>
   </button>`;
 }
 function pane(x){
@@ -408,13 +438,13 @@ let lastFocus=null, lastFocusCard=null, cur=null, curIdx=0;
 function showIdea(k){
   curIdx=k;
   mBody.querySelectorAll(".tab").forEach((t,i)=>t.setAttribute("aria-selected", i===k));
-  mBody.querySelector("#pane").innerHTML = pane(cur.i[k]) + `<div class="m-nav"><button type="button" class="nav-btn" data-step="-1" ${k===0?"disabled":""}>← Anterior</button><button type="button" class="nav-btn" data-step="1" ${k===cur.i.length-1?"disabled":""}>Siguiente idea →</button></div>`;
+  mBody.querySelector("#pane").innerHTML = pane(cur.i[k]) + `<div class="m-nav"><button type="button" class="nav-btn" data-step="-1" ${k===0?"disabled":""}>← Anterior</button><button type="button" class="nav-btn" data-step="1" ${k===cur.i.length-1?'data-close>Ver otro negocio →':'>Siguiente idea →'}</button></div>`;
   mPanel.scrollTop=0;
 }
 function openModal(c){
   cur=c;
-  mBody.innerHTML = `<div class="m-head"><button type="button" class="modal__x" data-close aria-label="Cerrar">×</button><span class="m-sec">${esc(c.s)}</span><h3 class="m-title" id="m-title">${esc(c.n)}</h3>
-    <div class="tabs" role="tablist">${c.i.map((x,k)=>`<button type="button" class="tab" role="tab" data-k="${k}">Idea ${k+1}</button>`).join("")}</div></div>
+  mBody.innerHTML = `<div class="m-head"><span class="grab" aria-hidden="true"></span><button type="button" class="modal__x" data-close>Cerrar <span aria-hidden="true">✕</span></button><span class="m-sec">${esc(c.s)}</span><h3 class="m-title" id="m-title">${esc(c.n)}</h3>
+    <div class="tabs" role="tablist">${c.i.map((x,k)=>`<button type="button" class="tab" role="tab" data-k="${k}">Idea ${k+1}</button>`).join("")}</div><p class="m-hint">Toca Idea 1, 2 o 3, o desliza hacia los lados</p></div>
     <div id="pane"></div>`;
   lastFocus=document.activeElement; modal.hidden=false; document.body.classList.add("lock"); showIdea(0); mPanel.focus();
 }
@@ -446,7 +476,16 @@ function render(){
   shown.textContent = (count===ALL.length ? `${SECTORS.length} sectores · ${ALL.length} negocios · ${ALL.length*3} ideas` : `${count} de ${ALL.length} negocios`);
   reset.hidden = !(q || sector!=="Todos");
 }
-chips.addEventListener("click", e=>{ const b=e.target.closest(".chip"); if(!b) return; sector=b.dataset.s; renderChips(); render(); });
+chips.addEventListener("click", e=>{ const b=e.target.closest(".chip"); if(!b) return; sector=b.dataset.s; renderChips(); render();
+  const fin=document.getElementById("finder"); const y=document.getElementById("results").getBoundingClientRect().top + scrollY - fin.offsetHeight - 6;
+  if (scrollY < y - 4 || sector!=="Todos") scrollTo({top:y, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto":"smooth"});
+  chips.querySelector('[aria-pressed="true"]')?.scrollIntoView({inline:"center", block:"nearest"});
+});
+(function(){ const fin=document.getElementById("finder"); const io=new IntersectionObserver(([en])=>fin.classList.toggle("stuck", en.intersectionRatio<1), {threshold:[1], rootMargin:"-1px 0px 0px 0px"}); io.observe(fin); })();
+let tx=null, ty=null;
+mPanel.addEventListener("touchstart", e=>{ const t=e.touches[0]; tx=t.clientX; ty=t.clientY; }, {passive:true});
+mPanel.addEventListener("touchend", e=>{ if(tx===null) return; const t=e.changedTouches[0]; const dx=t.clientX-tx, dy=t.clientY-ty; tx=null;
+  if (Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.5){ const k=curIdx+(dx<0?1:-1); if(k>=0 && k<cur.i.length) showIdea(k); } }, {passive:true});
 input.addEventListener("input", ()=>{ q=input.value; render(); });
 results.addEventListener("click", e=>{ const b=e.target.closest(".card[data-id]"); if(!b) return; const c=ALL.find(x=>x.id===b.dataset.id); lastFocusCard=b; pushed=true; location.hash=c.id; });
 reset.addEventListener("click", ()=>{ q=""; input.value=""; sector="Todos"; renderChips(); render(); });
